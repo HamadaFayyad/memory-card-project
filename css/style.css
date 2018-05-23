@@ -1,0 +1,23 @@
+/*---------------------------------------------------------
+                    # Start Global Rules
+---------------------------------------------------------*/
+/* Embad The Font */
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+/* Rest The Page */
+*
+{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box
+}
+
+/* Set The Default Font */
+body,
+html
+{font-family: 'Raleway', sans-serif}
+/*---------------------------------------------------------
+                    # End Global Rules
+---------------------------------------------------------*/
