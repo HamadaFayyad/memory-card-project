@@ -21,6 +21,12 @@ html
     font-family: 'Raleway', sans-serif
 }
 
+body
+{
+    /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/geometry2.png');
+}
+
 ul{list-style-type: none}
 
 main
