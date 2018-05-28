@@ -70,6 +70,8 @@ main
     width: 100%;
     display: flex;
 }
+
+.settings .stars{display: flex; padding-right: 30px}
 /*---------------------------------------------------------
                 # End Game Settings Rules
 ---------------------------------------------------------*/
