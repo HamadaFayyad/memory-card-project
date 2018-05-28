@@ -37,13 +37,7 @@ main
     align-items: center;
 }
 
-.game-container
-{
-    width: 500px;
-    padding: 20px;
-    border-radius: 6px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5)
-}
+.game-container{width: 500px}
 /*---------------------------------------------------------
                     # End Global Rules
 ---------------------------------------------------------*/
