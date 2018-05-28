@@ -72,6 +72,8 @@ main
 }
 
 .settings .stars{display: flex; padding-right: 30px}
+
+.settings .moves{text-transform: capitalize; padding: 0 90px 0 30px}
 /*---------------------------------------------------------
                 # End Game Settings Rules
 ---------------------------------------------------------*/
