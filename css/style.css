@@ -21,6 +21,8 @@ html
     font-family: 'Raleway', sans-serif
 }
 
+ul{list-style-type: none}
+
 main
 {
     height: 100%;
