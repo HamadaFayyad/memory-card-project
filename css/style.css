@@ -14,10 +14,12 @@
     box-sizing: border-box
 }
 
-/* Set The Default Font */
 body,
 html
-{font-family: 'Raleway', sans-serif}
+{
+    height: 100vh;
+    font-family: 'Raleway', sans-serif
+}
 /*---------------------------------------------------------
                     # End Global Rules
 ---------------------------------------------------------*/
