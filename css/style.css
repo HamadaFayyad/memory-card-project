@@ -20,6 +20,14 @@ html
     height: 100vh;
     font-family: 'Raleway', sans-serif
 }
+
+main
+{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*---------------------------------------------------------
                     # End Global Rules
 ---------------------------------------------------------*/
