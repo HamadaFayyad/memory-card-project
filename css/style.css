@@ -64,6 +64,7 @@ main
 {
     width: 100%;
     display: flex;
+    padding-bottom: 20px
 }
 
 .settings .stars{display: flex; padding-right: 30px}
