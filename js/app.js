@@ -10,9 +10,7 @@ let cards = [],
 
     movesCounter = 0,
 
-    rattingStars = 0,
-
-    clickes = 0;
+    rattingStars = 0;
 
 const cardsList = cardsInitialize();
 
@@ -112,7 +110,11 @@ function changeCardsPosition() {
 // TODO : Add Click Event To Every Cards
 $(".card").on("click", function () {
 
-    let symbol = this.firstElementChild; // Get The Symbol Inside The Card
+    // TODO : Get The Symbol Inside The Card
+    let symbol = this.firstElementChild,
+
+        // TODO : Get Matched Card
+        checkMatch = this.classList.contains("match");
 
     // console.log(symbol);
 
@@ -174,15 +176,20 @@ $(".card").on("click", function () {
                 */
                 function unmatchedCards () {
 
-                    memoryValues[0].classList.remove("flip-card");
+                    // TODO : Check If The Card That The Gamer Clicks Doesn't Have Match Class To Avoid Flipping Cards Back When The Gamer Clicks Them Again After They Have Matched
+                    if (!checkMatch) {
 
-                    memoryValues[0].firstElementChild.classList.remove("display-symbol");
+                        memoryValues[0].classList.remove("flip-card");
 
-                    memoryValues[1].classList.remove("flip-card");
+                        memoryValues[0].firstElementChild.classList.remove("display-symbol");
 
-                    memoryValues[1].firstElementChild.classList.remove("display-symbol");
+                        memoryValues[1].classList.remove("flip-card");
 
-                    memoryValues = [];
+                        memoryValues[1].firstElementChild.classList.remove("display-symbol");
+
+                        memoryValues = [];
+                    }
+
                 }
                 setTimeout(unmatchedCards, 700);
             } // End Else
