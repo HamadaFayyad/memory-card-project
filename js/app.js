@@ -142,6 +142,8 @@ $(".card").on("click", function () {
             // Push The Second Card Into The Memory Values Array
             memoryValues.push(this);
 
+            moves (); // TODO : Run Moves Counter
+
             // TODO : Get The Second Card Unique Class
             secondCard = this.firstElementChild.classList.item(1);
 
@@ -198,4 +200,20 @@ $(".card").on("click", function () {
 
     } // End If
 
-});
+}); // End Click Event
+
+/*
+    @Description : Count Number Of Clicks That The Gamer Takes To Finish The Game. Every Two Clicks Equal One Move
+*/
+function moves () {
+
+    // TODO : Check If There Are Two Flipped Cards
+    if (memoryValues.length == 2) {
+
+        movesCounter++; // TODO : Increase movesCounter By 1 For Every Two Flipped Cards
+
+        // TODO : Append The movesCounter Into The moves-number
+        document.getElementsByClassName("moves-number")[0].innerHTML = movesCounter;
+    }
+
+}
