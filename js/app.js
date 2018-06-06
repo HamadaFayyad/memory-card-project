@@ -137,7 +137,7 @@ $(".card").on("click", function () {
         symbol.classList.add("display-symbol"); // TODO : Display The Symbol
 
         // TODO : Check if The Memory Values Array Doesn't Has Any Cards Than Push The First Card into it.
-        if (memoryValues.length == 0) { // Start If
+        if (memoryValues.length == 0 && !checkMatch) { // Start If
 
             // TODO : Push The First Card Into The Memory Values Array
             memoryValues.push(this);
@@ -145,10 +145,8 @@ $(".card").on("click", function () {
             // TODO : Get The First Card Unique Class
             firstCard = this.firstElementChild.classList.item(1);
 
-            // console.log("First Card Class ==> " + firstCard);
-
         // TODO : if The Memory Values Array Has One Cards Then Push The Second Cards Into it
-        } else if (memoryValues.length == 1) { // Start Else If
+        } else if (memoryValues.length == 1 && !checkMatch) { // Start Else If
 
             // Push The Second Card Into The Memory Values Array
             memoryValues.push(this);
@@ -157,8 +155,6 @@ $(".card").on("click", function () {
 
             // TODO : Get The Second Card Unique Class
             secondCard = this.firstElementChild.classList.item(1);
-
-            // console.log("Second Card Class ==> " + secondCard);
 
             // TODO : Check if The Both Flipped Cards Are Matched The Mark Them As Matched Cards
             if (firstCard == secondCard) { // Start If
