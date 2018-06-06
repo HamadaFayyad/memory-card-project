@@ -6,6 +6,8 @@ let cards = [],
 
     heckMatch,
 
+    hasFlipCardClass,
+
     firstCard,
 
     secondCard,
@@ -104,7 +106,7 @@ function shuffle(array) {
 }
 
 /*
-    @Description : Replace The Old Deck With The Shuffled Deck.
+    @Description : Replace The Old Deck With The Shuffled Deck
 */
 function changeCardsPosition() {
 
@@ -140,16 +142,19 @@ $(".card").on("click", gameLogic);
 function gameLogic () {
 
     // TODO : Get The Symbol Inside The Card
-    symbol = this.firstElementChild,
+    symbol = this.firstElementChild;
 
     // TODO : Get Matched Card
     checkMatch = this.classList.contains("match");
 
+    // TODO : Get The Flipped Cards
+    hasFlipCardClass = this.classList.contains("flip-card");
+
     // TODO : Run The Timer
     fireTiming ();
 
-    // TODO : Make Sure That The Memory Values Array Has Maxmum Two Cards
-    if (memoryValues.length < 2) { // Start If
+    // TODO : Make Sure That The Memory Values Array Has Maxmum Two Cards And The Card isn't Flipped To Avoid The Bug That Happen When The Gamer Clicks The Same Flipped Card Again
+    if (memoryValues.length < 2 && !hasFlipCardClass) { // Start If
 
         this.classList.add("flip-card"); // TODO : Flip The Current Card
 
