@@ -131,6 +131,16 @@ main
 .display-symbol{backface-visibility: visible}
 
 .match{background-color: #02ccba}
+
+.timer .fa
+{
+    font-size: 1.2em;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #02ccba
+}
+
+.timer .time{display: inline-block; height: 100%; vertical-align: middle}
 /*---------------------------------------------------------
                 # End Deck Rules
 ---------------------------------------------------------*/
