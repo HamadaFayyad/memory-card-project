@@ -10,7 +10,17 @@ let cards = [],
 
     movesCounter = 0,
 
-    rattingStars = 0;
+    rattingStars = 0,
+
+    createTimer,
+
+    seconds = 0,
+
+    minutes = 0,
+
+    hours = 0,
+
+    firstClick = true;
 
 const cardsList = cardsInitialize();
 
@@ -116,7 +126,8 @@ $(".card").on("click", function () {
         // TODO : Get Matched Card
         checkMatch = this.classList.contains("match");
 
-    // console.log(symbol);
+    // TODO : Run The Timer
+    fireTiming ();
 
     // TODO : Make Sure That The Memory Values Array Has Maxmum Two Cards
     if (memoryValues.length < 2) { // Start If
@@ -167,6 +178,8 @@ $(".card").on("click", function () {
 
                     console.log("Congratulion, You Win");
 
+                    clearInterval(createTimer);
+
                     memoryValues = [];
                 } // End If
 
@@ -216,4 +229,84 @@ function moves () {
         document.getElementsByClassName("moves-number")[0].innerHTML = movesCounter;
     }
 
+}
+
+/*
+    @Description : Create A Timer To Count The Time That The Gamer Takes To Finish The Game
+*/
+function startTiming () {
+
+    /*
+        @Description : Create The Seconds, Minutes And Hours And Append Them To The Timer
+    */
+    createTimer = setInterval(function () {
+
+        // TODO : Increase The Seconds By One Every 1000 Miliseconds
+        seconds++;
+
+        if (seconds < 10) {
+
+            // TODO : Put 0 Before The Seconds If The Seconds Less Than 10
+            seconds = "0" + seconds;
+
+        }
+
+        // TODO : Append The Second To The Seconds Container
+        document.querySelector(".seconds").innerHTML = seconds;
+
+        if (seconds == 60) { // Start If
+
+            // TODO : Increase The Minutes By 1 Evey 60 Seconds
+            minutes++;
+
+            // TODO : Rest The Seconds To 0 Every 60 Seconds
+            seconds = 0;
+
+            if (minutes < 10) { // Start If
+
+                // TODO : Put 0 Before The Minutes If The Minutes Less Than 10
+                minutes = "0" + minutes;
+
+            } // End If
+
+            // TODO : Append The Minutes To The Minutes Container
+            document.querySelector(".minutes").innerHTML = minutes + " : ";
+
+        } // End If
+
+        if (minutes == 60) { // Start If
+
+            // TODO : Increase The Hours By 1 Every 60 Minutes
+            hours++;
+
+            // TODO : Rest The Minutes To 0 Every 60 Minutes
+            minutes = 0;
+
+            if (hours < 10) { // Start If
+
+                // TODO : Put 0 Before The Hours If The Hours Less Than 10
+                hours = "0" + hours;
+
+            } // End If
+
+            // TODO : Append The Hours To The Hours Container
+            document.querySelector(".hours").innerHTML = hours + " : ";
+
+        } // End If
+
+    }, 1000);
+}
+
+/*
+    @Description : Run The Timer When The Gamer Clicks The First Card
+*/
+function fireTiming () {
+
+    // TODO : Check If The Click is The First Click To Run The Timer To Avoid Starting it Again When The Gamer Clicks The Next Cards
+    if (firstClick) {
+
+        startTiming ();
+
+        firstClick = false;
+    }
 }
