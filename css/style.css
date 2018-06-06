@@ -88,7 +88,14 @@ main
 
 .timer .time{display: inline-block; height: 100%; vertical-align: middle}
 
-.settings .moves{text-transform: capitalize; padding: 0 90px 0 30px}
+.settings .moves
+{
+    text-transform: capitalize;
+    padding: 0 90px 0 30px;
+    color: #02ccba
+}
+
+.settings .moves .moves-number{color: #000}
 
 .settings .reset-game{color: #02ccba; font-size: 1.2em; cursor: pointer}
 
