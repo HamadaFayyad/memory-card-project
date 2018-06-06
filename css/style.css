@@ -90,7 +90,14 @@ main
 
 .settings .moves{text-transform: capitalize; padding: 0 90px 0 30px}
 
-.settings .reset-game{cursor: pointer}
+.settings .reset-game{color: #02ccba; font-size: 1.2em; cursor: pointer}
+
+.settings .reset-game:hover .fa
+{
+    transform: rotate(360deg);
+    transform-origin: center;
+    transition: .5s;
+}
 /*---------------------------------------------------------
                 # End Game Settings Rules
 ---------------------------------------------------------*/
