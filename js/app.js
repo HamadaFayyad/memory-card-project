@@ -18,7 +18,9 @@ let cards = [],
 
     hours = 0,
 
-    firstClick = true;
+    firstClick = true,
+
+    stars = document.querySelectorAll(".star");
 
 const cardsList = cardsInitialize();
 
@@ -321,26 +323,26 @@ function ratingStars () {
     // TODO : Set Four Stars If The Moves Number Between 21 And 40 Moves
     if (movesCounter >= 21 && movesCounter <= 40) {
 
-        document.querySelectorAll(".star")[4].classList.add("decrease-rating");
+        stars[4].classList.add("decrease-rating");
 
     // TODO : Set Three Stars If The Moves Number Between 41 And 60 Moves
     } else if (movesCounter >= 41 && movesCounter <= 60) {
 
-        document.querySelectorAll(".star")[3].classList.add("decrease-rating");
+        stars[3].classList.add("decrease-rating");
 
     // TODO : Set Two Stars If The Moves Number Between 61 And 80 Moves
     } else if (movesCounter >= 61 && movesCounter <= 80) {
 
-        document.querySelectorAll(".star")[2].classList.add("decrease-rating");
+        stars[2].classList.add("decrease-rating");
 
     // TODO : Set One Stars If The Moves Number Between 81 And 100 Moves
     } else if (movesCounter >= 81 && movesCounter <= 100) {
 
-        document.querySelectorAll(".star")[1].classList.add("decrease-rating");
+        stars[1].classList.add("decrease-rating");
 
     // TODO : Set No Stars If The Moves Number Greater Than Or Equal 110 Moves
     } else if (movesCounter >= 110) {
 
-        document.querySelectorAll(".star")[0].classList.add("decrease-rating");
+        stars[0].classList.add("decrease-rating");
     }
 }
