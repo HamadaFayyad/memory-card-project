@@ -2,6 +2,10 @@ let cards = [],
 
     memoryValues = [],
 
+    symbol,
+
+    heckMatch,
+
     firstCard,
 
     secondCard,
@@ -18,13 +22,23 @@ let cards = [],
 
     hours = 0,
 
-    firstClick = true,
+    firstClick = true;
 
-    stars = document.querySelectorAll(".star");
+const stars = document.querySelectorAll(".star"),
 
-const cardsList = cardsInitialize();
+      hoursContainer = document.querySelector(".hours"),
 
-const shuffleCards = shuffle(cardsList);
+      minutesContainer = document.querySelector(".minutes"),
+
+      secondsContainer = document.querySelector(".seconds"),
+
+      movesNumberContainer = document.getElementsByClassName("moves-number")[0],
+
+      resetIcon = document.querySelector(".reset-game"),
+
+      cardsList = cardsInitialize(),
+
+      shuffleCards = shuffle(cardsList);
 
 changeCardsPosition(); // TODO : Run changeCardsPosition Function
 
@@ -118,13 +132,18 @@ function changeCardsPosition() {
 }
 
 // TODO : Add Click Event To Every Cards
-$(".card").on("click", function () {
+$(".card").on("click", gameLogic);
+
+/*
+    Description : Game Logic
+*/
+function gameLogic () {
 
     // TODO : Get The Symbol Inside The Card
-    let symbol = this.firstElementChild,
+    symbol = this.firstElementChild,
 
-        // TODO : Get Matched Card
-        checkMatch = this.classList.contains("match");
+    // TODO : Get Matched Card
+    checkMatch = this.classList.contains("match");
 
     // TODO : Run The Timer
     fireTiming ();
@@ -209,7 +228,7 @@ $(".card").on("click", function () {
 
     } // End If
 
-}); // End Click Event
+} // End gameLogic
 
 /*
     @Description : Count Number Of Clicks That The Gamer Takes To Finish The Game. Every Two Clicks Equal One Move
@@ -222,7 +241,7 @@ function moves () {
         movesCounter++; // TODO : Increase movesCounter By 1 For Every Two Flipped Cards
 
         // TODO : Append The movesCounter Into The moves-number
-        document.getElementsByClassName("moves-number")[0].innerHTML = movesCounter;
+        movesNumberContainer.innerHTML = movesCounter;
 
         // TODO : Run Rating Star
         ratingStars ();
@@ -251,7 +270,7 @@ function startTiming () {
         }
 
         // TODO : Append The Second To The Seconds Container
-        document.querySelector(".seconds").innerHTML = seconds;
+        secondsContainer.innerHTML = seconds;
 
         if (seconds == 60) { // Start If
 
@@ -269,7 +288,7 @@ function startTiming () {
             } // End If
 
             // TODO : Append The Minutes To The Minutes Container
-            document.querySelector(".minutes").innerHTML = minutes + " : ";
+            minutesContainer.innerHTML = minutes + " : ";
 
         } // End If
 
@@ -289,7 +308,7 @@ function startTiming () {
             } // End If
 
             // TODO : Append The Hours To The Hours Container
-            document.querySelector(".hours").innerHTML = hours + " : ";
+            hoursContainer.innerHTML = hours + " : ";
 
         } // End If
 
@@ -342,3 +361,47 @@ function ratingStars () {
         stars[0].classList.add("decrease-rating");
     }
 }
+
+/*
+    @Description : Reset Game
+*/
+function resetGame () {
+
+    tilesFlipped = 0;
+
+    movesCounter = 0;
+
+    clearInterval(createTimer);
+
+    seconds = 0;
+
+    minutes = 0;
+
+    hours = 0;
+
+    firstClick = true;
+
+    // TODO : Remove decrease-rating From All Stars To Display Them Again
+    for (let i = 0; i < stars.length; i++) {
+
+        stars[i].classList.remove("decrease-rating");
+    }
+
+    hoursContainer.innerHTML = "00 :";
+
+    minutesContainer.innerHTML = " 00 :";
+
+    secondsContainer.innerHTML = " 00";
+
+    movesNumberContainer.innerHTML = movesCounter;
+
+    shuffle (cardsList);
+
+    changeCardsPosition ();
+
+    $(".card").on("click", gameLogic);
+}
+
+// TODO : Reset The Game When The Gamer Clicks The Reset Icon
+resetIcon.addEventListener("click", resetGame);
+
