@@ -10,8 +10,6 @@ let cards = [],
 
     movesCounter = 0,
 
-    rattingStars = 0,
-
     createTimer,
 
     seconds = 0,
@@ -227,6 +225,9 @@ function moves () {
 
         // TODO : Append The movesCounter Into The moves-number
         document.getElementsByClassName("moves-number")[0].innerHTML = movesCounter;
+
+        // TODO : Run Rating Star
+        ratingStars ();
     }
 
 }
@@ -303,10 +304,43 @@ function startTiming () {
 function fireTiming () {
 
     // TODO : Check If The Click is The First Click To Run The Timer To Avoid Starting it Again When The Gamer Clicks The Next Cards
-    if (firstClick) {
+    if (firstClick) { // Start If
 
         startTiming ();
 
         firstClick = false;
+
+    } // End If
+}
+
+/*
+    @Description : Rating The Gamer based on The Number Of Moves
+*/
+function ratingStars () {
+
+    // TODO : Set Four Stars If The Moves Number Between 21 And 40 Moves
+    if (movesCounter >= 21 && movesCounter <= 40) {
+
+        document.querySelectorAll(".star")[4].classList.add("decrease-rating");
+
+    // TODO : Set Three Stars If The Moves Number Between 41 And 60 Moves
+    } else if (movesCounter >= 41 && movesCounter <= 60) {
+
+        document.querySelectorAll(".star")[3].classList.add("decrease-rating");
+
+    // TODO : Set Two Stars If The Moves Number Between 61 And 80 Moves
+    } else if (movesCounter >= 61 && movesCounter <= 80) {
+
+        document.querySelectorAll(".star")[2].classList.add("decrease-rating");
+
+    // TODO : Set One Stars If The Moves Number Between 81 And 100 Moves
+    } else if (movesCounter >= 81 && movesCounter <= 100) {
+
+        document.querySelectorAll(".star")[1].classList.add("decrease-rating");
+
+    // TODO : Set No Stars If The Moves Number Greater Than Or Equal 110 Moves
+    } else if (movesCounter >= 110) {
+
+        document.querySelectorAll(".star")[0].classList.add("decrease-rating");
     }
 }
