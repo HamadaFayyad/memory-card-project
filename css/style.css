@@ -68,7 +68,25 @@ main
     padding-bottom: 20px
 }
 
-.settings .stars{display: flex; padding-right: 30px}
+.settings .stars
+{
+    display: flex;
+    padding-right: 30px;
+    color: #fdd003;
+    font-size: 1.2em
+}
+
+.decrease-rating{color: transparent}
+
+.timer .fa
+{
+    font-size: 1.2em;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #02ccba
+}
+
+.timer .time{display: inline-block; height: 100%; vertical-align: middle}
 
 .settings .moves{text-transform: capitalize; padding: 0 90px 0 30px}
 
@@ -131,16 +149,6 @@ main
 .display-symbol{backface-visibility: visible}
 
 .match{background-color: #02ccba}
-
-.timer .fa
-{
-    font-size: 1.2em;
-    margin-right: 10px;
-    vertical-align: middle;
-    color: #02ccba
-}
-
-.timer .time{display: inline-block; height: 100%; vertical-align: middle}
 /*---------------------------------------------------------
                 # End Deck Rules
 ---------------------------------------------------------*/
