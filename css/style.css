@@ -88,6 +88,10 @@ main
 
 .timer .time{display: inline-block; height: 100%; vertical-align: middle}
 
+.timer .time:first-of-type{padding-right: 5px}
+
+.timer .time + .time{padding-right: 5px}
+
 .settings .moves
 {
     text-transform: capitalize;
@@ -165,4 +169,140 @@ main
 .match{background-color: #02ccba}
 /*---------------------------------------------------------
                 # End Deck Rules
+---------------------------------------------------------*/
+
+/*---------------------------------------------------------
+                # Start Modal Rules
+---------------------------------------------------------*/
+.modal
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #aa7ecd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(0);
+    transform-origin: center;
+    transition: .5s ease-out
+}
+
+.display-modal{transform: scale(1); transition: .5s}
+
+.successful-modal
+{
+    width: 400px;
+    min-height: 200px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 2px
+}
+
+.check-symbol-container
+{
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 50%;
+    border: 3px solid #6ca230;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.check-symbol
+{
+    width: 30px;
+    height: 15px;
+    position: relative;
+    transform: rotate(-45deg);
+    margin-top: -7.5px
+}
+
+.check-symbol::before
+{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background-color: #6ca230
+}
+
+.check-symbol::after
+{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: #6ca230
+}
+
+.animate-circle
+{
+    transform: rotate(-360deg);
+    transform-origin: center;
+    transition: .3s ease-in .3s
+}
+
+
+/* .check-symbol-container:hover .check-symbol
+{
+    transform: rotate(315deg);
+    transform-origin: center;
+    transition: .5s ease-in
+} */
+
+.animate-check::before
+{
+    height: 100%;
+    transition: height .3s ease-in .3s
+}
+
+.animate-check::after
+{
+    width: 100%;
+    transition: width .3s ease-in .6s
+}
+
+.successful-msg{text-transform: capitalize; padding: 0 20px 20px}
+
+.successful-msg h3{margin-bottom: 10px}
+
+.successful-msg p{line-height: 1.5em; color: #666}
+
+.successful-msg strong{font-weight: 600}
+
+.successful-msg .fa-star{color: #fdd003}
+
+.successful-msg .fa-clock-o{color: #02ccba}
+
+.play-again
+{
+    width: 120px;
+    height: 30px;
+    color: #fff;
+    background-color: #00b9a6;
+    line-height: 30px;
+    font-weight: 700;
+    text-transform: capitalize;
+    border-radius: 3px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+    transition: .4s ease-in
+}
+
+.play-again:hover
+{
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: .4s ease-in
+}
+/*---------------------------------------------------------
+                # End Modal Rules
 ---------------------------------------------------------*/
