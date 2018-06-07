@@ -14,6 +14,8 @@ let cards = [],
 
     tilesFlipped = 0,
 
+    ratingStarsCounter = 5,
+
     movesCounter = 0,
 
     createTimer,
@@ -26,7 +28,9 @@ let cards = [],
 
     firstClick = true;
 
-const stars = document.querySelectorAll(".star"),
+const deck = document.querySelector(".deck"),
+
+      stars = document.querySelectorAll(".star"),
 
       hoursContainer = document.querySelector(".hours"),
 
@@ -34,9 +38,27 @@ const stars = document.querySelectorAll(".star"),
 
       secondsContainer = document.querySelector(".seconds"),
 
-      movesNumberContainer = document.getElementsByClassName("moves-number")[0],
+      movesNumberContainer = document.querySelector(".moves-number"),
 
       resetIcon = document.querySelector(".reset-game"),
+
+      modal = document.querySelector(".modal"),
+
+      checkSymbol = document.querySelector(".check-symbol"),
+
+      movesStat = document.querySelector(".moves-stat"),
+
+      starsStat = document.querySelector(".stars-stat"),
+
+      hoursStat = document.querySelector(".hours-stat"),
+
+      minutesStat = document.querySelector(".minutes-stat"),
+
+      secondsStat = document.querySelector(".seconds-stat"),
+
+      starsContainer = document.querySelector(".stars"),
+
+      playAgain = document.querySelector(".play-again"),
 
       cardsList = cardsInitialize(),
 
@@ -130,7 +152,7 @@ function changeCardsPosition() {
     }
 
     // TODO : Append The Shuffled Cards To The Deck
-    document.getElementsByClassName("deck")[0].innerHTML = newDeck.innerHTML;
+    deck.innerHTML = newDeck.innerHTML;
 }
 
 // TODO : Add Click Event To Every Cards
@@ -195,6 +217,8 @@ function gameLogic () {
 
                 // TODO : Check If The Flipped Cards Number Equal The Cards Number Then Finish The Game
                 if (tilesFlipped == cards.length) { // Start If
+
+                    finishGame ();
 
                     console.log("Congratulion, You Win");
 
@@ -293,7 +317,7 @@ function startTiming () {
             } // End If
 
             // TODO : Append The Minutes To The Minutes Container
-            minutesContainer.innerHTML = minutes + " : ";
+            minutesContainer.innerHTML = minutes;
 
         } // End If
 
@@ -313,7 +337,7 @@ function startTiming () {
             } // End If
 
             // TODO : Append The Hours To The Hours Container
-            hoursContainer.innerHTML = hours + " : ";
+            hoursContainer.innerHTML = hours;
 
         } // End If
 
@@ -345,25 +369,35 @@ function ratingStars () {
 
         stars[4].classList.add("decrease-rating");
 
+        ratingStarsCounter = 4;
+
     // TODO : Set Three Stars If The Moves Number Between 41 And 60 Moves
     } else if (movesCounter >= 41 && movesCounter <= 60) {
 
         stars[3].classList.add("decrease-rating");
+
+        ratingStarsCounter = 3;
 
     // TODO : Set Two Stars If The Moves Number Between 61 And 80 Moves
     } else if (movesCounter >= 61 && movesCounter <= 80) {
 
         stars[2].classList.add("decrease-rating");
 
+        ratingStarsCounter = 2;
+
     // TODO : Set One Stars If The Moves Number Between 81 And 100 Moves
     } else if (movesCounter >= 81 && movesCounter <= 100) {
 
         stars[1].classList.add("decrease-rating");
 
+        ratingStarsCounter = 1;
+
     // TODO : Set No Stars If The Moves Number Greater Than Or Equal 110 Moves
     } else if (movesCounter >= 110) {
 
         stars[0].classList.add("decrease-rating");
+
+        ratingStarsCounter = 0;
     }
 }
 
@@ -392,11 +426,11 @@ function resetGame () {
         stars[i].classList.remove("decrease-rating");
     }
 
-    hoursContainer.innerHTML = "00 :";
+    hoursContainer.innerHTML = "00";
 
-    minutesContainer.innerHTML = " 00 :";
+    minutesContainer.innerHTML = "00";
 
-    secondsContainer.innerHTML = " 00";
+    secondsContainer.innerHTML = "00";
 
     movesNumberContainer.innerHTML = movesCounter;
 
@@ -409,4 +443,34 @@ function resetGame () {
 
 // TODO : Reset The Game When The Gamer Clicks The Reset Icon
 resetIcon.addEventListener("click", resetGame);
+
+/*
+    @Description : Display Game Statistics When The Gamer Finishes The Game Successfully And Give Him Option To Play Again
+*/
+function finishGame () {
+
+    modal.classList.add("display-modal");
+
+    checkSymbol.classList.add("animate-check");
+
+    movesStat.innerHTML = movesNumberContainer.textContent;
+
+    starsStat.innerHTML = ratingStarsCounter;
+
+    hoursStat.innerHTML = hours;
+
+    minutesStat.innerHTML = minutes;
+
+    secondsStat.innerHTML = seconds;
+
+    // TODO : Reset The Game When The Gamer Clicks The Reset Icon
+    playAgain.addEventListener("click", function () {
+
+        resetGame ();
+
+        modal.classList.remove("display-modal");
+
+        checkSymbol.classList.remove("animate-check");
+    });
+}
 
