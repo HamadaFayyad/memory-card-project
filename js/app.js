@@ -240,13 +240,37 @@ function gameLogic () {
 
                         memoryValues[0].classList.remove("flip-card");
 
+                        memoryValues[0].classList.add("unmatch");
+
                         memoryValues[0].firstElementChild.classList.remove("display-symbol");
+
+                        memoryValues[0].firstElementChild.classList.add("hide-symbol");
 
                         memoryValues[1].classList.remove("flip-card");
 
+                        memoryValues[1].classList.add("unmatch");
+
                         memoryValues[1].firstElementChild.classList.remove("display-symbol");
 
-                        memoryValues = [];
+                        memoryValues[1].firstElementChild.classList.add("hide-symbol");
+
+                        /*
+                            @Description : Remove unmatch And hide-symbol Classes After Flip Both Unmatched cards To Avoid Preventing Unmatching Animation When The Gamer Clicks The Same Cards Again
+                        */
+                        setTimeout(function () {
+
+                            memoryValues[0].classList.remove("unmatch");
+
+                            memoryValues[0].firstElementChild.classList.remove("hide-symbol");
+
+                            memoryValues[1].classList.remove("unmatch");
+
+                            memoryValues[1].firstElementChild.classList.remove("hide-symbol");
+
+                            memoryValues = [];
+
+                        }, 700);
+
                     }
 
                 }
