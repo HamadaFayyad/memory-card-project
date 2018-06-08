@@ -447,6 +447,8 @@ function ratingStars () {
 */
 function resetGame () {
 
+    memoryValues = [];
+
     tilesFlipped = 0;
 
     movesCounter = 0;
