@@ -179,9 +179,9 @@ main
     100% {transform: scale(1, 1); transition: .4s ease-in}
 }
 
-.unmatch{animation: unmatchAnimate .8s}
+.unmatch{animation: unmatchAnimate .6s}
 
-.hide-symbol{backface-visibility: hidden; transition-delay: .8s}
+.hide-symbol{backface-visibility: hidden; transition-delay: .6s}
 
 @keyframes unmatchAnimate
 {
@@ -192,28 +192,28 @@ main
         transition: .4s ease-in
     }
 
-    20%
+    15%
     {
         background-color: #f85c3e;
         transform: rotateY(0deg) translateX(10px);
         transition: .4s ease-in
     }
 
-    40%
+    30%
     {
         background-color: #f85c3e;
         transform: rotateY(0deg) translateX(-10px);
         transition: .4s ease-in
     }
 
-    60%
+    45%
     {
         background-color: #f85c3e;
         transform: rotateY(0deg) translateX(10px);
         transition: .4s ease-in
     }
 
-    80%, 100%
+    55%, 100%
     {
         background-color: #2e3d49;
         transform: rotateY(180deg) translateX(0);
