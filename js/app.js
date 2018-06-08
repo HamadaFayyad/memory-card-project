@@ -434,6 +434,11 @@ function ratingStars () {
         ratingStarsCounter = 0;
 
         successfulNote = "great! finally you have finished it, try to finish it faster next time";
+    } else {
+
+        ratingStarsCounter = 5;
+
+        successfulNote = "Wooooooo! great job, you have great memory";
     }
 }
 
