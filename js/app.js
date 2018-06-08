@@ -389,35 +389,35 @@ function fireTiming () {
 function ratingStars () {
 
     // TODO : Set Four Stars If The Moves Number Between 21 And 40 Moves
-    if (movesCounter >= 21 && movesCounter <= 40) {
+    if (movesCounter >= 21 && movesCounter <= 30) {
 
         stars[4].classList.add("decrease-rating");
 
         ratingStarsCounter = 4;
 
     // TODO : Set Three Stars If The Moves Number Between 41 And 60 Moves
-    } else if (movesCounter >= 41 && movesCounter <= 60) {
+    } else if (movesCounter >= 31 && movesCounter <= 40) {
 
         stars[3].classList.add("decrease-rating");
 
         ratingStarsCounter = 3;
 
     // TODO : Set Two Stars If The Moves Number Between 61 And 80 Moves
-    } else if (movesCounter >= 61 && movesCounter <= 80) {
+    } else if (movesCounter >= 41 && movesCounter <= 50) {
 
         stars[2].classList.add("decrease-rating");
 
         ratingStarsCounter = 2;
 
     // TODO : Set One Stars If The Moves Number Between 81 And 100 Moves
-    } else if (movesCounter >= 81 && movesCounter <= 100) {
+    } else if (movesCounter >= 51 && movesCounter <= 60) {
 
         stars[1].classList.add("decrease-rating");
 
         ratingStarsCounter = 1;
 
     // TODO : Set No Stars If The Moves Number Greater Than Or Equal 110 Moves
-    } else if (movesCounter >= 110) {
+    } else if (movesCounter >= 61) {
 
         stars[0].classList.add("decrease-rating");
 
