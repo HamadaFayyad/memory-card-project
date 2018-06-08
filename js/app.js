@@ -436,6 +436,8 @@ function resetGame () {
 
     clearInterval(createTimer);
 
+    ratingStarsCounter = 5,
+
     seconds = 0;
 
     minutes = 0;
