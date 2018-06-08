@@ -269,12 +269,12 @@ function gameLogic () {
 
                             memoryValues = [];
 
-                        }, 700);
+                        }, 600);
 
                     }
 
                 }
-                setTimeout(unmatchedCards, 700);
+                setTimeout(unmatchedCards, 600);
             } // End Else
 
         } // End Else If
