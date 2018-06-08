@@ -35,7 +35,7 @@ main
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px 0 30px
+    padding: 20px 30px 30px
 }
 
 .game-container{width: 500px}
@@ -360,4 +360,41 @@ main
 }
 /*---------------------------------------------------------
                 # End Modal Rules
+---------------------------------------------------------*/
+
+/*---------------------------------------------------------
+                # Start Responsive Version
+---------------------------------------------------------*/
+@media screen and (max-width: 520px) {
+
+    .settings{flex-wrap: wrap}
+
+    .settings .stars,
+    .settings .timer,
+    .settings .moves,
+    .settings .reset-game
+    {
+        width: 50%;
+        padding: 0
+    }
+
+    .settings .stars,
+    .settings .timer
+    {margin-bottom: 20px}
+
+    .card{width: 90px; height: 90px; font-size: 1.50}
+
+    .deck .card .symbol{line-height: 90px}
+
+    .successful-modal{width: 300px}
+}
+
+@media screen and (max-width: 400px) {
+
+    .card{width: 70px; height: 70px; font-size: 1.25em}
+
+    .deck .card .symbol{line-height: 70px}
+}
+/*---------------------------------------------------------
+                # End Responsive Version
 ---------------------------------------------------------*/
