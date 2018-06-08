@@ -26,7 +26,9 @@ let cards = [],
 
     hours = 0,
 
-    firstClick = true;
+    firstClick = true,
+
+    successfulNote = "Wooooooo! great job, you have great memory";
 
 const deck = document.querySelector(".deck"),
 
@@ -57,6 +59,8 @@ const deck = document.querySelector(".deck"),
       secondsStat = document.querySelector(".seconds-stat"),
 
       starsContainer = document.querySelector(".stars"),
+
+      noteText = document.querySelector(".note-text"),
 
       playAgain = document.querySelector(".play-again"),
 
@@ -219,8 +223,6 @@ function gameLogic () {
                 if (tilesFlipped == cards.length) { // Start If
 
                     finishGame ();
-
-                    console.log("Congratulion, You Win");
 
                     clearInterval(createTimer);
 
@@ -395,12 +397,16 @@ function ratingStars () {
 
         ratingStarsCounter = 4;
 
+        successfulNote = "Wooooooo! great job, you have great memory";
+
     // TODO : Set Three Stars If The Moves Number Between 41 And 60 Moves
     } else if (movesCounter >= 31 && movesCounter <= 40) {
 
         stars[3].classList.add("decrease-rating");
 
         ratingStarsCounter = 3;
+
+        successfulNote = "great job, you have great memory";
 
     // TODO : Set Two Stars If The Moves Number Between 61 And 80 Moves
     } else if (movesCounter >= 41 && movesCounter <= 50) {
@@ -409,6 +415,8 @@ function ratingStars () {
 
         ratingStarsCounter = 2;
 
+        successfulNote = "great job, try to finish it faster next time";
+
     // TODO : Set One Stars If The Moves Number Between 81 And 100 Moves
     } else if (movesCounter >= 51 && movesCounter <= 60) {
 
@@ -416,12 +424,16 @@ function ratingStars () {
 
         ratingStarsCounter = 1;
 
+        successfulNote = "great job! you did it, try to finish it faster next time";
+
     // TODO : Set No Stars If The Moves Number Greater Than Or Equal 110 Moves
     } else if (movesCounter >= 61) {
 
         stars[0].classList.add("decrease-rating");
 
         ratingStarsCounter = 0;
+
+        successfulNote = "great! finally you have finished it, try to finish it faster next time";
     }
 }
 
@@ -488,6 +500,8 @@ function finishGame () {
     minutesStat.innerHTML = minutes;
 
     secondsStat.innerHTML = seconds;
+
+    noteText.textContent = successfulNote;
 
     // TODO : Reset The Game When The Gamer Clicks The Reset Icon
     playAgain.addEventListener("click", function () {
