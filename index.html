@@ -10,6 +10,35 @@
     </head>
     <body>
         <main>
+
+            <!-- Start Gamer Name Modal -->
+            <div class="gamer-name-modal">
+                <form class="gamer-info">
+
+                    <!-- Warning Message Appears When The Gamer Doesn't Enter valid Name -->
+                    <div class="warning-msg hide-msg"></div>
+                    <input class="gamer-name" type="text" name="gamer" placeholder="Please Enter Your Name *" autofocus>
+                    <input class="primary-btn save-name" type="submit" value="Start Game">
+                    <button class="primary-btn open-latest-scores" title="Click To Open Last Five Scores Board">
+                        latest scores
+                        <i class="fa fa-trophy"></i>
+                    </button>
+                </form>
+            </div>
+            <!-- End Gamer Name Modal -->
+
+            <!-- Start Last Score Board -->
+            <div class="last-scores-modal">
+                <button class="close-btn">
+                    &times;
+                </button>
+                <section class="last-scores">
+                    <h2 class="title">latest five scores</h2>
+                    <div class="last-scores-board"></div>
+                </section>
+            </div>
+            <!-- End Last Score Board -->
+
             <div class="game-container">
                 <!-- Start Heaer -->
                 <header class="game-header">
@@ -48,6 +77,12 @@
                         <i class="fa fa-repeat" title="Restart The Game"></i>
                     </div>
                     <!-- End Reset Game -->
+
+                    <!-- Start Last Five Scores Icon -->
+                    <div class="last-five">
+                        <i class="fa fa-trophy" title="Click To Open Last Five Scores Board"></i>
+                    </div>
+                    <!-- End Last Five Scores Icon -->
 
                 </div>
                 <!-- End Settings -->
@@ -140,7 +175,11 @@
                             </p>
                         </p>
                     </article>
-                    <button class="play-again">play again?</button>
+                    <button class="primary-btn play-again">play again?</button>
+                    <button class="primary-btn open-latest-scores" title="Click To Open Last Five Scores Board">
+                        latest scores
+                        <i class="fa fa-trophy"></i>
+                    </button>
                 </div>
             </div>
             <!-- End Successful Modal -->
