@@ -28,6 +28,8 @@ let cards = [],
 
     firstClick = true,
 
+    gamerName,
+
     successfulNote = "Wooooooo! great job, you have great memory";
 
 const deck = document.querySelector(".deck"),
@@ -63,6 +65,22 @@ const deck = document.querySelector(".deck"),
       noteText = document.querySelector(".note-text"),
 
       playAgain = document.querySelector(".play-again"),
+
+      warningMsg = document.querySelector(".warning-msg"),
+
+      gamerNameElm = document.querySelector(".gamer-name"),
+
+      submitGamerNameBtn = document.querySelector(".save-name"),
+
+      gamerNameModal = document.querySelector(".gamer-name-modal"),
+
+      latestScoresModal = document.querySelector(".last-scores-modal"),
+
+      lastFiveIcon = document.querySelector(".last-five"),
+
+      OpenLatestScoresBtn = document.querySelectorAll(".open-latest-scores"),
+
+      closeBtn = document.querySelector(".close-btn"),
 
       cardsList = cardsInitialize(),
 
@@ -179,7 +197,7 @@ function gameLogic () {
     // TODO : Run The Timer
     fireTiming ();
 
-    // TODO : Make Sure That The Memory Values Array Has Maxmum Two Cards And The Card isn't Flipped To Avoid The Bug That Happen When The Gamer Clicks The Same Flipped Card Again
+    // TODO : Make Sure That The Memory Values Array Has Maxmum Two Cards And The Card isn't Flipped To Avoid The Bug That Happens When The Gamer Clicks The Same Flipped Card Again
     if (memoryValues.length < 2 && !hasFlipCardClass) { // Start If
 
         this.classList.add("flip-card"); // TODO : Flip The Current Card
@@ -479,6 +497,11 @@ function resetGame () {
 
     movesNumberContainer.innerHTML = movesCounter;
 
+    gamerName = document.querySelector(".gamer-name").value = "";
+
+    // TODO : Display The Gamer Name Modal To Get  The Gamer Name
+    document.querySelector(".gamer-name-modal").classList.remove("hide-modal");
+
     shuffle (cardsList);
 
     changeCardsPosition ();
@@ -519,5 +542,192 @@ function finishGame () {
 
         checkSymbol.classList.remove("animate-check");
     });
+
+    saveLatestScores ();
+
 }
+
+/*
+    @Description : Get The Gamer Name To Start playing
+    @Param {e} e - Target The Event
+*/
+submitGamerNameBtn.onclick = function (e) {
+
+    e.preventDefault();
+
+    gamerName = document.querySelector(".gamer-name").value;
+
+    if (!gamerName) {
+
+        warningMsg.textContent = "Please Enter Your name";
+
+        warningMsg.classList.remove("hide-msg");
+
+        gamerNameElm.classList.add("red-border");
+
+        return false;
+
+    } else if (gamerName.length > 20) {
+
+        warningMsg.textContent = "The Should Be less Than 20 Letter";
+
+        warningMsg.classList.remove("hide-msg");
+
+        gamerNameElm.classList.add("red-border");
+
+        return false;
+
+    } else {
+
+        warningMsg.classList.add("hide-msg");
+
+        gamerNameElm.classList.remove("red-border");
+
+        // TODO : Hide The Gamer Name Modal After Getting Gamer Name
+        gamerNameModal.classList.add("hide-modal");
+
+        return true
+    }
+
+};
+
+/*
+    @description : Save The Latest Scores
+*/
+function saveLatestScores () {
+
+    const latestScore = {
+
+        name : gamerName,
+
+        movesNumber : movesNumberContainer.textContent + " moves",
+
+        starsNumber : ratingStarsCounter + " Stars"
+    };
+
+    // TODO : Check If There Isn't LatestScores Item In Local Storage To Initialize A New One
+    if(localStorage.getItem("latestScores") === null) {
+
+        // TODO : Create LatestScores Array To Store The Scores Into it
+        let latestScores = [];
+
+        // TODO : Push The Score Into The LatestScores Array
+        latestScores.push(latestScore);
+
+        // TODO : Store The latestScores Array Into Local Storage After Transfer it To String
+        localStorage.setItem("latestScores", JSON.stringify(latestScores));
+
+        console.log(latestScores);
+
+    // TODO : If Already There Is latestScores Array in Local Storage Fetch it
+    } else {
+
+        // TODO : Get latestScores From Local Storage And Transfer It To Object Again
+        let latestScores = JSON.parse(localStorage.getItem("latestScores"));
+
+        latestScores.push(latestScore);
+
+        localStorage.setItem("latestScores", JSON.stringify(latestScores));
+    }
+
+    fetchLatestScores ();
+
+}
+
+/*
+    @Description : Fetch The latestScores From The Local Storage And Display it
+*/
+function fetchLatestScores () {
+
+    let latestScores = JSON.parse(localStorage.getItem("latestScores")),
+
+        latestScoresBoard = document.querySelector(".last-scores-board");
+
+        latestScoresBoard.innerHTML = "";
+
+    for (let i = 0; i < latestScores.length; i++) {
+
+        let name = latestScores[i].name,
+
+            movesNumber = latestScores[i].movesNumber,
+
+            starsNumber = latestScores[i].starsNumber;
+
+        // TODO : If The latestScores Has Less Than 5 Scores Then Add New One
+        if (latestScores.length <= 5) {
+
+            // TODO : Create New Score And Add It To The Latest Five Scores Board
+            latestScoresBoard.innerHTML +=
+                            "<ul class='score'>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-user'></i>"+
+                                    name+
+                                "</li>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-calculator'></i>"+
+                                    movesNumber+
+                                "</li>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-star'></i>"+
+                                    starsNumber+
+                                "</li>"+
+                            "</ul>";
+
+        // TODO : If The latestScores Has 5 Scores
+        } else {
+
+            // TODO : Remove The First Score In The Board
+            latestScores.splice(0, 1);
+
+            // TODO : Create New Score And Add It To The Latest Five Scores Board
+            latestScoresBoard.innerHTML +=
+                            "<ul class='score'>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-user'></i>"+
+                                    name+
+                                "</li>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-calculator'></i>"+
+                                    movesNumber+
+                                "</li>"+
+                                "<li class='item'>"+
+                                    "<i class='fa fa-star'></i>"+
+                                    starsNumber+
+                                "</li>"+
+                            "</ul>";
+        }
+
+        localStorage.setItem("latestScores", JSON.stringify(latestScores));
+    }
+
+}
+
+/*
+    @Description : Display Latest Five Scores Board
+    @Param {e} e - Target The Event
+*/
+function openLatestScores (e) {
+
+    e.preventDefault();
+
+    latestScoresModal.classList.add("show-modal");
+
+    fetchLatestScores ();
+}
+
+// TODO : Open The Latest Five Scores Board When The Gamer Clicks Last Five Icon
+lastFiveIcon.addEventListener("click", openLatestScores);
+
+// TODO : Open The Latest Five Scores Board When The Gamer Clicks Latest Scores Button
+for (let i = 0; i < OpenLatestScoresBtn.length; i++) {
+
+    OpenLatestScoresBtn[i].addEventListener("click", openLatestScores);
+}
+
+//TODO : Close The Latest Five Scores Board When The Gamer Clicks Close Button
+closeBtn.onclick = function () {
+
+    latestScoresModal.classList.remove("show-modal");
+};
+
 
