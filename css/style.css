@@ -304,7 +304,8 @@ main
     height: 100%;
     line-height: 100px;
     border-radius: 6px;
-    backface-visibility: hidden
+    backface-visibility: hidden;
+    transform: translate3d(0,0,0); /* Fix Visibility Of The Card Back In FireFox*/
 }
 
 .flip-card
