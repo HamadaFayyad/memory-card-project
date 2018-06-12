@@ -82,6 +82,12 @@ const deck = document.querySelector(".deck"),
 
       closeBtn = document.querySelector(".close-btn"),
 
+      helpIcon = document.querySelector(".help-icon"),
+
+      closeHelp = document.querySelector(".close-help"),
+
+      helpModal = document.querySelector(".help"),
+
       cardsList = cardsInitialize(),
 
       shuffleCards = shuffle(cardsList);
@@ -729,5 +735,17 @@ closeBtn.onclick = function () {
 
     latestScoresModal.classList.remove("show-modal");
 };
+
+// TODO : Open Help Modal When The Gamer Clicks Help Icon
+helpIcon.onclick = function () {
+
+    helpModal.classList.add("display-modal");
+}
+
+// TODO : Close Help Modal When The Gamer Clicks Close Help icon
+closeHelp.onclick = function () {
+
+    helpModal.classList.remove("display-modal");
+}
 
 
