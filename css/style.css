@@ -378,7 +378,8 @@ main
 /*---------------------------------------------------------
                 # Start Modal Rules
 ---------------------------------------------------------*/
-.modal
+.modal,
+.help
 {
     position: fixed;
     top: 0;
@@ -474,6 +475,50 @@ main
 .successful-msg .fa-clock-o{color: #02ccba}
 /*---------------------------------------------------------
                 # End Modal Rules
+---------------------------------------------------------*/
+
+/*---------------------------------------------------------
+                # Start Help Rules
+---------------------------------------------------------*/
+.help
+{
+    display: block;
+    z-index: 2;
+    background-color: #563d7c;
+    transform-origin: right bottom;
+}
+
+.help .title{text-align: center; margin: 30px 0}
+
+.help .playing-steps
+{
+    width: 300px;
+    margin: auto;
+    padding: 20px;
+    list-style-type: disc
+}
+
+.help .playing-step{margin-bottom: 30px; color: #ffe484}
+
+.help-icon
+{
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    box-shadow: 0px 2px 20px 0 rgba(2, 204, 186, .8);
+    text-align: center;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer
+}
+/*---------------------------------------------------------
+                # End Help Rules
 ---------------------------------------------------------*/
 
 /*---------------------------------------------------------
