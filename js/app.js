@@ -30,7 +30,11 @@ let cards = [],
 
     gamerName,
 
-    successfulNote = "Wooooooo! great job, you have great memory";
+    successfulNote = "Wooooooo! great job, you have great memory",
+
+    moveSlide = 0,
+
+    stepsNumber = 1;
 
 const deck = document.querySelector(".deck"),
 
@@ -87,6 +91,16 @@ const deck = document.querySelector(".deck"),
       closeHelp = document.querySelector(".close-help"),
 
       helpModal = document.querySelector(".help"),
+
+      previousBtn = document.querySelectorAll(".prev-btn"),
+
+      nextBtn = document.querySelectorAll(".next-btn"),
+
+      wrapper = document.querySelector(".wrapper"),
+
+      stepsCounter = document.querySelectorAll(".steps-counter"),
+
+      gotItBtn = document.querySelector(".gotit-btn"),
 
       cardsList = cardsInitialize(),
 
@@ -743,9 +757,60 @@ helpIcon.onclick = function () {
 }
 
 // TODO : Close Help Modal When The Gamer Clicks Close Help icon
-closeHelp.onclick = function () {
+closeHelp.addEventListener("click", closeHelpModal);
+
+// TODO : Close Help Modal When The Gamer Clicks Gotit Button
+gotItBtn.addEventListener("click", closeHelpModal);
+
+/*
+    @Description : Close Help Modal
+*/
+function closeHelpModal () {
 
     helpModal.classList.remove("display-modal");
 }
 
+// TODO : Set Step Number For The First Playing Steps
+stepsCounter[0].innerHTML = stepsNumber;
 
+// TODO : Add Click Event To Every Next Button
+for (let i = 0; i < nextBtn.length; i++) {
+
+    /*
+        @Description : Move The Steps's Wrapper Forward And Increases The Steps number
+    */
+    nextBtn[i].onclick = function moveStepsForward() {
+
+        moveSlide -= 300;
+
+        stepsNumber += 1;
+
+        stepsCounter[(i + 1)].innerHTML = stepsNumber;
+
+        wrapper.style.transform = "translateX(" + moveSlide + "px)";
+
+        wrapper.style.transition = ".5s";
+    }
+
+}
+
+// TODO : Add Click Event To Every Previous Button
+for (let i = 0; i < previousBtn.length; i++) {
+
+    /*
+        @Description : Move The Steps's Wrapper Backward And Decreases The Steps Number
+    */
+    previousBtn[i].onclick = function moveStepsBackward () {
+
+        moveSlide += 300;
+
+        stepsNumber -= 1;
+
+        stepsCounter[i].innerHTML = stepsNumber;
+
+        wrapper.style.transform = "translateX(" + moveSlide + "px)";
+
+        wrapper.style.transition = ".5s";
+    }
+
+}
